@@ -1,0 +1,553 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siêu thị Bách hóa XANH - Mua bán thực phẩm, sản phẩm gia đình</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: #0E7A3E;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .search-bar {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+        }
+
+            .search-bar input {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 4px;
+            }
+
+            .search-bar button {
+                padding: 10px;
+                background: #333;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 4px;
+                margin-left: 5px;
+            }
+
+        .menu {
+            background: #f8f8f8;
+            width: 250px;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            bottom: 0;
+            padding: 15px;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+        }
+
+            .menu ul {
+                list-style: none;
+            }
+
+                .menu ul li {
+                    padding: 10px 0;
+                    border-bottom: 1px solid #ddd;
+                }
+
+                    .menu ul li a {
+                        text-decoration: none;
+                        color: #333;
+                        font-weight: bold;
+                    }
+
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+            padding-top: 100px;
+        }
+
+        .banner-section, .ad-banner-section {
+            position: relative;
+            width: 980px;
+            margin: 20px auto;
+        }
+
+        .banner-slider, .ad-banner-slider, .product-slider {
+            display: flex;
+            overflow: hidden;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+
+        .banner, .ad-banner {
+            flex: 0 0 auto;
+            width: 980px;
+            height: 125px;
+            margin-right: 10px;
+        }
+
+            .banner img, .ad-banner img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .slider-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+            .slider-button.left {
+                left: 0;
+            }
+
+            .slider-button.right {
+                right: 0;
+            }
+
+        .product-section {
+            background: #ffffff;
+            width: 980px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            margin: auto;
+        }
+
+            .product-section h2 {
+                margin-bottom: 10px;
+            }
+
+        .product {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            width: 180px;
+            background-color: white;
+            text-align: center;
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+            .product img {
+                max-width: 100%;
+                margin-bottom: 10px;
+            }
+
+        footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-top: 2px solid #ddd;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .footer-column {
+            flex: 1;
+            padding: 10px;
+        }
+
+            .footer-column ul {
+                list-style: none;
+            }
+
+                .footer-column ul li {
+                    margin-bottom: 8px;
+                }
+
+                    .footer-column ul li a {
+                        text-decoration: none;
+                        color: #333;
+                    }
+
+        .social-media a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .app-links a {
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+            .footer-logos a {
+                margin: 0 10px;
+            }
+
+            .footer-logos img {
+                max-width: 100px;
+            }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            font-size: 12px;
+            color: #888;
+            margin-top: 15px;
+        }
+
+        .app-links img {
+            width: 120px;
+            height: 40px;
+        }
+
+        .button-buy {
+            background: #f0fff0;
+            color: #008000;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+
+            .button-buy:hover {
+                background-color: #e0ffe0;
+                color: #006600;
+            }
+
+        .logo img {
+            width: 130px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Icno-Bach-Hoa-Xanh-Tra-H.png" alt="">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Hãy nhập tên sản phẩm cần tìm...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="user-options">
+            <a href="#" style="color: white; text-decoration: none;"><i class="fas fa-user"></i> Đăng nhập</a>
+        </div>
+    </header>
+
+    <div class="menu">
+        <ul>
+            <li><a href="#">Khuyến Mãi Sốc</a></li>
+            <li><a href="#">Thịt, Cá, Trứng, Hải Sản</a></li>
+            <li><a href="#">Rau, Củ, Quả, Trái Cây</a></li>
+            <li><a href="#">Đồ Ăn, Nước Chấm, Gia Vị</a></li>
+            <li><a href="#">Mì, Miến, Cháo, Phở</a></li>
+            <li><a href="#">Thực Phẩm Đông Lạnh</a></li>
+            <li><a href="#">Gạo, Bột, Đồ Khô</a></li>
+            <li><a href="#">Sữa Các Loại</a></li>
+            <li><a href="#">Bánh Kẹo Các Loại</a></li>
+            <li><a href="#">Chăm Sóc Cá Nhân</a></li>
+            <li><a href="#">Sản Phẩm Cho Mẹ và Bé</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="banner-section">
+            <div class="slider-controls">
+                <button class="slider-button left" onclick="moveSlide('banner-slider', -1)">&#10094;</button>
+                <button class="slider-button right" onclick="moveSlide('banner-slider', 1)">&#10095;</button>
+            </div>
+            <div class="banner-slider" id="banner-slider">
+                <div class="banner">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/5599/trang-cate-pc_202409211120577044.jpg" alt="Banner 1">
+                </div>
+                <div class="banner">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/5599/980x125-2_202409131342015375.png" alt="Banner 2">
+                </div>
+                <div class="banner">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/5599/pc_202410011153052300.png" alt="Banner 3">
+                </div>
+            </div>
+        </div>
+
+        <section id="products" class="product-section">
+            <h2>Sản Phẩm Nổi Bật</h2>
+            <div class="slider-controls">
+                <button class="slider-button left" onclick="moveSlide('featured', -1)">&#10094;</button>
+                <button class="slider-button right" onclick="moveSlide('featured', 1)">&#10095;</button>
+            </div>
+            <div class="product-slider" id="featured">
+
+                <div class="product">
+                    <img src="https://cdn.tgdd.vn/Products/Images/3708/305808/bhx/nuoc-tay-trang-garnier-salicylic-bha-lam-sach-sau-sach-nhon-chai-400ml-202407230933002090.jpg" alt="Sản phẩm 1">
+                    <h3>Nước tẩy trang Garnier sạch nhờn 400ml</h3>
+                    <p>150,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8790/316943/bhx/323328-min_202409251435161115.jpg" alt="Sản phẩm 1">
+                    <h3>Gà dai nhập khẩu Hàn Quốc 1.3kg-1.4kg</h3>
+                    <p>79,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdn.tgdd.vn/Products/Images/2491/228857/bhx/bo-2-ban-chai-danh-rang-colgate-flex-clean-202402201612311487.jpg" alt="Sản phẩm 1">
+                    <h3>2 bàn chải Colgate SlimSoft Flex Clean</h3>
+                    <p>Giá: 70,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8781/275806/bhx/325486-min-1_202409091605199273.jpg" alt="Sản phẩm 1">
+                    <h3>Ba rọi heo nhập khẩu 500g</h3>
+                    <p>Giá: 63,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdn.tgdd.vn/Products/Images/2565/175933/bhx/thung-30-goi-mi-3-mien-tom-hum-65g-202306160838587082.jpg" alt="Sản phẩm 1">
+                    <h3>Thùng 30 gói mì 3 Miền tôm hùm 65g</h3>
+                    <p>69,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdn.tgdd.vn/Products/Images/8820/226916/bhx/rau-muong-hat-400g-202407180929365897.jpg" alt="Sản phẩm 1">
+                    <h3>Rau muống hạt 400g</h3>
+                    <p>Giá: 5,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdn.tgdd.vn/Products/Images/8820/318099/bhx/cai-be-xanh-400g-202408021341394360.jpg" alt="Sản phẩm 1">
+                    <h3>Cải bẹ xanh 400g</h3>
+                    <p>Giá: 5,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdn.tgdd.vn/Products/Images/8820/222855/bhx/rau-den-400g-202408021341579064.jpg" alt="Sản phẩm 1">
+                    <h3>Rau dền 400g</h3>
+                    <p>Giá: 5,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="ad-banner-section">
+            <div class="slider-controls">
+                <button class="slider-button left" onclick="moveSlide('ad-banner-slider', -1)">&#10094;</button>
+                <button class="slider-button right" onclick="moveSlide('ad-banner-slider', 1)">&#10095;</button>
+            </div>
+            <div class="ad-banner-slider" id="ad-banner-slider">
+                <div class="ad-banner">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/5185/cate-pc-14_202409201127069005.jpg" alt="Ad Banner 1">
+                </div>
+                <div class="ad-banner">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/5185/cate-pc-12_202409192204474531.jpg" alt="Ad Banner 2">
+                </div>
+                <div class="ad-banner">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/5599/cate-pc_202409101623110635.png" alt="Ad Banner 3">
+                </div>
+            </div>
+        </div>
+
+        <section id="flash-sale" class="product-section">
+            <h2>Flash Sale</h2>
+            <div class="slider-controls">
+                <button class="slider-button left" onclick="moveSlide('flashSale', -1)">&#10094;</button>
+                <button class="slider-button right" onclick="moveSlide('flashSale', 1)">&#10095;</button>
+            </div>
+            <div class="product-slider" id="flashSale">
+
+                <div class="product">
+                    <img src="https://cdn.tgdd.vn/Products/Images/2286/310854/bhx/dau-dau-nanh-meizan-can-5-lit-202308020919216732.jpg" alt="Flash Sale 1">
+                    <h3>Dầu đâu nành Meizan 5 lít</h3>
+                    <p>239,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdn.tgdd.vn/Products/Images/2385/320951/bhx/tra-sua-tran-chau-hillway-hop-416g-clone-202401031430147436.jpg" alt="Flash Sale 1">
+                    <h3>Trà sữa trân châu Hillway hộp 260g</h3>
+                    <p>Giá: 40,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/2444/195634/bhx/195634-2-1_202410011644409366.jpg" alt="Flash Sale 1">
+                    <h3>Sữa tắm Lifebuoy matcha & khổ qua 784ml</h3>
+                    <p>180,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/2806/82271/bhx/82271-thumb-omni_202409271110139607.jpg" alt="Flash Sale 1">
+                    <h3>Hạt nêm thịt thăn Knorr 400g</h3>
+                    <p>32,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdn.tgdd.vn/Products/Images/2513/236014/bhx/gao-thom-vua-gao-st25-tui-5kg-202312071149419082.jpg" alt="Flash Sale 1">
+                    <h3>Gạo thơm Vua Gạo ST25 túi 5kg</h3>
+                    <p>145,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/2513/324448/bhx/thiet-ke-chua-co-ten-2024-09-17t161742457_202409171617500408.jpg" alt="Flash Sale 1">
+                    <h3>Gạo thơm Neptune ST25 Extra túi 5kg</h3>
+                    <p>145,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/2444/253027/bhx/253027-5-1_202410011643081209.jpg" alt="Flash Sale 1">
+                    <h3>Sữa tắm nước hoa Lux hoa hồng Pháp 562ml</h3>
+                    <p>139,000 VNĐ</p>
+                    <button class="button-buy">Mua</button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-info">
+                <div class="footer-column">
+                    <ul>
+                        <li><strong>Hướng dẫn mua hàng</strong></li>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Tích điểm Quà tặng VIP</a></li>
+                        <li><a href="#">Cần thuê mặt bằng</a></li>
+                        <li><a href="#">Hỏi đáp</a></li>
+                        <li><a href="#">Tuyển 5443 việc</a></li>
+                        <li><a href="#">Mua Phiếu mua hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <ul>
+                        <li><strong>Chính sách</strong></li>
+                        <li><a href="#">Hóa đơn điện tử</a></li>
+                        <li><a href="#">Giới thiệu công ty</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Xem 1714 cửa hàng</a></li>
+                        <li><a href="#">Quy chế Web</a></li>
+                        <li><a href="#">Mua sim, thẻ cào</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <ul>
+                        <li><strong>Chính sách khách hàng</strong></li>
+                        <li><a href="#">Chính sách khách hàng</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Trả góp, điện nước</a></li>
+                        <li><a href="#">Đăng ký chào hàng</a></li>
+                        <li><a href="#">Cảnh báo giả mạo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <div class="social-media">
+                        <p><strong>Kết nối với chúng tôi</strong></p>
+                        <a href="#"><i class="fab fa-facebook"></i> 588k fan</a><br>
+                        <a href="#"><i class="fab fa-youtube"></i> 62,7k theo dõi</a>
+                    </div>
+                    <div class="app-links">
+                        <p><strong>Tải app Bách hóa Xanh</strong></p>
+                        <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6NdVlZuqxDxPih8FsQugwvtwgg-FlE1GP-g&s" alt="Google Play"></a>
+                        <a href="#"><img src="https://w7.pngwing.com/pngs/735/271/png-transparent-app-store-apple-itunes-ios-apple-text-logo-fruit-nut.png" alt="App Store"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Bán hàng 7:00 - 21:30 <strong>1900 1908</strong> | Khiếu nại 7:30 - 21:00 <strong>1800 1067</strong> | Cam kết: <strong>15.000 sản phẩm</strong> | <strong>Freeship đơn 100k</strong> | <strong>Giao 2h</strong></p>
+            <p>© 2018. Công Ty Cổ Phần Thương Mại Bách Hóa Xanh. GPĐKKD: 0310471746 do sở KH & ĐT TP.HCM cấp ngày 23/11/2010. Giấy phép thiết lập mạng xã hội trên mạng (Số 20/GP-BTTTT) do Bộ Thông Tin Và Truyền Thông cấp ngày 11/01/2021. Trụ sở chính: 128 Trần Quang Khải, P.Tân Định, Quận 1, TP.HCM. Email: lienhe@bachhoaxanh.vn SĐT: 028.38125960 Chịu trách nhiệm nội dung: Trịnh Quang Duy.</p>
+        </div>
+    </footer>
+
+    <script>
+        function moveSlide(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const productWidth = slider.children[0].offsetWidth + 20;
+            slider.scrollBy({
+                top: 0,
+                left: productWidth * direction,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>
